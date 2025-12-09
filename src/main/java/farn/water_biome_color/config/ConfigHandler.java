@@ -9,6 +9,6 @@ public class ConfigHandler {
 
     public static class Instance {
         @ConfigEntry(name = "Water's Biome Color Style")
-        public EnumWaterRGBStyle waterRGB = EnumWaterRGBStyle.BIREVAN;
+        public EnumWaterRGBStyle waterRGB = EnumWaterRGBStyle.TMC;
     }
 }

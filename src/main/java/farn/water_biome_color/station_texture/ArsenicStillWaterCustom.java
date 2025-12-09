@@ -61,7 +61,7 @@ public class ArsenicStillWaterCustom extends ArsenicStillWater {
             int var7;
             int var8;
             switch(WaterBiomeColor.getRGBStyle()) {
-                case BIREVAN : {
+                case TMC: {
                     var18 = (int)(111.0F + var17 * 76.0F);
                     var19 = (int)(139.0F + var17 * 116.0F);
                     var7 = 255;

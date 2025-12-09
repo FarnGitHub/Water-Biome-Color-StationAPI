@@ -20,7 +20,7 @@ public class WaterBiomeColor {
         if(gcapi) {
             return ConfigHandler.getInst.waterRGB;
         }
-        return EnumWaterRGBStyle.BIREVAN;
+        return EnumWaterRGBStyle.TMC;
     }
 
     static {
