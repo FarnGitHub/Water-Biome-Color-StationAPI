@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "farn.water_biome_color.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "ArsenicFlowingWaterAccessor",
+    "ArsenicMixin",
+    "WaterBlockMixin",
+    "WaterColorAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

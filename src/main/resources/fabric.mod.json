@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "template",
+  "version": "${version}",
+  "name": "Water biome Color",
+  "description": "Add biome colorizer to water",
+  "authors": [
+    "farnfarn02",
+    "vivianfox",
+    "Birevan"
+  ],
+  "license": "MIT",
+  "icon": "farn/water_biome_color/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "gcapi3": [
+      "farn.water_biome_color.config.ConfigHandler"
+    ],
+    "gcapi3:factory_provider": [
+      "farn.water_biome_color.config.WaterRGBStyleConfigFactory"
+    ],
+    "gcapi3:presave": [
+      "farn.water_biome_color.config.ReloadWorldListener"
+    ]
+  },
+  "mixins": [
+    "water_biome_color.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "1.0.0-beta.7.3",
+    "stationapi": "*"
+  }
+}
