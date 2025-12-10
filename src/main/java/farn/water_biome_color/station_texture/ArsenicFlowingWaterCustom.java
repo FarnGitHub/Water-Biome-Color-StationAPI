@@ -74,6 +74,13 @@ public class ArsenicFlowingWaterCustom extends ArsenicFlowingWater {
                     var8 = (int)(146.0F + var17 * 50.0F);
                     break;
                 }
+                case FARN: {
+                    var18 = 192;
+                    var19 = 192;
+                    var7 = 255;
+                    var8 = (int)(146F + var17 * 50F);
+                    break;
+                }
                 case VIVIAN: {
                     var18 = 128;
                     var19 = 128;
