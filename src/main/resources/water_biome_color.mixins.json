@@ -4,8 +4,8 @@
   "package": "farn.water_biome_color.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
-    "ArsenicFlowingWaterAccessor",
-    "ArsenicMixin",
+    "ArsenicFlowingWaterMixin",
+    "ArsenicStillWaterMixin",
     "WaterBlockMixin",
     "WaterColorAccessor"
   ],

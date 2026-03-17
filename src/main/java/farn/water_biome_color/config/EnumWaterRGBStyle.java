@@ -3,8 +3,8 @@ package farn.water_biome_color.config;
 
 public enum EnumWaterRGBStyle {
     TMC("TheMasterCaver"),
-    VIVIAN("VivianFox"),
-    FARN("Farn"),
+    VIVIAN("Vivian"),
+    VIBRANT("Vibrant Blue"),
     OFF("OFF");
 
     private final String stringer;
@@ -13,8 +13,7 @@ public enum EnumWaterRGBStyle {
         stringer = string;
     }
 
-    @Override
-    public String toString() {
+    public String getDisplayName() {
         return stringer;
     }
 }

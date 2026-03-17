@@ -12,12 +12,10 @@ public class ReloadWorldListener implements PreConfigSavedListener {
     @Override
     public void onPreConfigSaved(int source, GlassYamlFile oldValues, GlassYamlFile newValues) {
         if(FabricLoader.getInstance().getGameInstance() != null) {
-            if(mc == null) {
+            if(mc == null)
                 mc = (Minecraft) FabricLoader.getInstance().getGameInstance();
-            }
-            if(mc.world != null) {
+            if(mc.world != null)
                 mc.worldRenderer.reload();
-            }
         }
     }
 }
