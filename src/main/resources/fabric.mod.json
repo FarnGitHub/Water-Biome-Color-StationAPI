@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "template",
+  "id": "water_biome_color",
   "version": "${version}",
   "name": "Water biome Color",
   "description": "Add biome colorizer to water",
@@ -10,24 +10,18 @@
     "Birevan"
   ],
   "license": "MIT",
-  "icon": "farn/water_biome_color/icon.png",
+  "icon": "farn/water_biome_color/TMC.png",
   "environment": "client",
   "entrypoints": {
-    "gcapi3": [
-      "farn.water_biome_color.config.ConfigHandler"
-    ],
-    "gcapi3:factory_provider": [
-      "farn.water_biome_color.config.WaterRGBStyleConfigFactory"
-    ],
-    "gcapi3:presave": [
-      "farn.water_biome_color.config.ReloadWorldListener"
+    "modmenu": [
+      "farn.water_biome_color.config.ModMenuEvent"
     ]
   },
+  "accessWidener": "water_biome_color.accessWidener",
   "mixins": [
     "water_biome_color.mixins.json"
   ],
   "depends": {
-    "minecraft": "1.0.0-beta.7.3",
-    "stationapi": "*"
+    "minecraft": "1.0.0-beta.7.3"
   }
 }
