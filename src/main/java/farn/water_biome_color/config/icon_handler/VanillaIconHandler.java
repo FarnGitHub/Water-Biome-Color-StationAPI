@@ -3,6 +3,7 @@ package farn.water_biome_color.config.icon_handler;
 import farn.water_biome_color.WaterBiomeColor;
 import farn.water_biome_color.config.WaterStyle;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.Tessellator;
@@ -12,7 +13,7 @@ import org.lwjgl.opengl.GL11;
 public class VanillaIconHandler extends DrawContext implements IconHandler{
 
     @Override
-    public void drawIcon(Screen screen) {
+    public void drawIcon(Minecraft mc, Screen screen) {
         float scale = 5F;
         float x = ((float) screen.width / (2 * scale)) - 8;
         int y = 10;
@@ -43,15 +44,14 @@ public class VanillaIconHandler extends DrawContext implements IconHandler{
         GL11.glPushMatrix();
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        mc.textureManager.bindTexture(mc.textureManager.getTextureId("/terrain.png"));
         tess.startQuads();
-        tess.translate(scale, scale, 0);
         tess.color(r, g, b);
         tess.vertex(x, y + 16, 0, startU, endV);
         tess.vertex(x + 16, y + 16, 0, endU, endV);
         tess.vertex(x + 16, y, 0, endU, startV);
         tess.vertex(x, y, 0, startU, startV);
         tess.draw();
-        tess.translate(-scale, -scale, 0);
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glPopMatrix();
     }

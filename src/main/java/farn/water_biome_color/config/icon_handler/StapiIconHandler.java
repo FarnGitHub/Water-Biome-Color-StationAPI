@@ -3,6 +3,7 @@ package farn.water_biome_color.config.icon_handler;
 import farn.water_biome_color.WaterBiomeColor;
 import farn.water_biome_color.config.WaterStyle;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.Tessellator;
@@ -15,7 +16,7 @@ public class StapiIconHandler extends DrawContext implements IconHandler{
     final float scale = 5F;
 
     @Override
-    public void drawIcon(Screen screen) {
+    public void drawIcon(Minecraft mc, Screen screen) {
         final float x = ((float) screen.width / (2 * scale)) - 8;
         final float y = 10;
         float r = 1.0F;

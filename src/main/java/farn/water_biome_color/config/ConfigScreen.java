@@ -24,7 +24,7 @@ public class ConfigScreen extends Screen {
         this.renderBackgroundTexture(0);
         super.render(mouseX, mouseY, delta);
         this.drawCenteredTextWithShadow(minecraft.textRenderer, "Water Biome's Color Configuration", this.width / 2, 12, 16777215);
-        IconHandler.INSTANCE.drawIcon(this);
+        IconHandler.INSTANCE.drawIcon(minecraft, this);
     }
 
     @SuppressWarnings("unchecked")
