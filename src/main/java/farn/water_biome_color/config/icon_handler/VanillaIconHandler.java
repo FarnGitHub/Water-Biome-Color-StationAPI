@@ -42,6 +42,7 @@ public class VanillaIconHandler extends DrawContext implements IconHandler{
         this.fill(bgMinX - 1, bgMinY - 1, bgMaxX + 1, bgMaxY + 1, -6250336);
         this.fill(bgMinX, bgMinY, bgMaxX, bgMaxY, -16777216);
         GL11.glPushMatrix();
+        GL11.glScalef(scale, scale, 0F);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         mc.textureManager.bindTexture(mc.textureManager.getTextureId("/terrain.png"));
