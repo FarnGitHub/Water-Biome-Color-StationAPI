@@ -1,67 +1,49 @@
 package farn.water_biome_color.config;
 
-import com.llamalad7.mixinextras.sugar.ref.LocalIntRef;
 import farn.water_biome_color.WaterBiomeColor;
+import farn.water_biome_color.util.RGBAModifier;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.*;
 
 public enum WaterStyle {
-    TMC("§bTheMasterCaver") {
-        public void setRGB(
-                float waterValue,
-                LocalIntRef r,
-                LocalIntRef g,
-                LocalIntRef b,
-                LocalIntRef a
-        ) {
-            r.set((int)(111.0F + waterValue * 76.0F));
-            g.set((int)(139.0F + waterValue * 116.0F));
-            b.set(255);
-            a.set((int)(146.0F + waterValue * 50.0F));
-        }
-    },
-    VIVIAN("§bVivian (Old)"){
-        public void setRGB(
-                float waterValue,
-                LocalIntRef r,
-                LocalIntRef g,
-                LocalIntRef b,
-                LocalIntRef a
-        ) {
-            r.set(128);
-            g.set(128);
-            b.set(128);
-            a.set((int)(146F + waterValue * 50F));
-        }
-    },
-    VIBRANT("§bVibrant Blue"){
-        public void setRGB(
-                float waterValue,
-                LocalIntRef r,
-                LocalIntRef g,
-                LocalIntRef b,
-                LocalIntRef a
-        ) {
-            r.set(192);
-            g.set(192);
-            b.set(255);
-            a.set((int)(146F + waterValue * 50F));
-        }
-    },
-    OFF("§cOFF");
+    TMC("TheMasterCaver",(w,r,g,b,a)->{
+        r.set((int)(111 + w * 76));
+        g.set((int)(139 + w * 116));
+        b.set(255);
+        a.set((int)(146 + w * 50));
+    }),
+    VIVIAN("Vivian (Old)",(w,r,g,b,a)->{
+        r.set(128);
+        g.set(128);
+        b.set(128);
+        a.set((int)(146 + w * 50));
+    }),
+    GREY_SCALED("Grey Scaled",(w,r,g,b,a)->{
+        int gray = (int)(
+            0.598 * r.get() +
+            1.174 * g.get() +
+            0.228 * b.get()
+        );
+        r.set(gray);
+        g.set(gray);
+        b.set(gray);
+    }),
+    OFF("OFF", (w,r,g,b,a)->{});
 
     public static final File optionsFile = new File(FabricLoader.getInstance().getConfigDir().toFile(), "water_biome_color.cfg");
 
     public final String displayName;
     public final String iconPath;
+    public final RGBAModifier modifier;
 
-    WaterStyle(String displayName) {
+    WaterStyle(String displayName, RGBAModifier modifier) {
         this.displayName = displayName;
         this.iconPath = "/farn/water_biome_color/" + name() + ".png";
+        this.modifier = modifier;
     }
 
-    public static void readFromOption() {
+    public static void readConfig() {
         if(!optionsFile.exists()) writeOptions();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(optionsFile));
@@ -78,10 +60,7 @@ public enum WaterStyle {
         }
     }
 
-    public void setRGB(float waterValue, LocalIntRef r, LocalIntRef g, LocalIntRef b, LocalIntRef a) {
-    }
-
     static {
-        readFromOption();
+        readConfig();
     }
 }

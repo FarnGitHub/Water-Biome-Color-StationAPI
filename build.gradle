@@ -1,7 +1,7 @@
 plugins {
     id 'maven-publish'
-    id 'fabric-loom' version '1.16.1'
-    id 'babric-loom-extension' version '1.15.3'
+    id 'fabric-loom' version '1.17.20'
+    id 'babric-loom-extension' version '1.17.4'
 }
 
 version = property("mod_version")
@@ -13,7 +13,7 @@ base {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -120,20 +120,8 @@ dependencies {
         }
     }
 
-    if (project.hasProperty("spawneggs_version")) {
-        modImplementation("net.danygames2014:spawneggs:${project.spawneggs_version}") {
-            transitive = false
-        }
-    }
-
     if (project.hasProperty("bhcreative_version")) {
         modImplementation("maven.modrinth:bh-creative:${project.bhcreative_version}-b1.7.3") {
-            transitive = false
-        }
-    }
-
-    if (project.hasProperty("accessoryapi_version")) {
-        modImplementation("maven.modrinth:accessory-api:${project.accessoryapi_version}") {
             transitive = false
         }
     }
@@ -142,20 +130,6 @@ dependencies {
         modImplementation("net.danygames2014:WhatsThis:${project.whatsthis_version}") {
             transitive = false
         }
-    }
-
-    if (project.hasProperty("nyalib_version")) {
-        modImplementation("net.danygames2014:NyaLib:${project.nyalib_version}")
-    }
-
-    if (project.hasProperty("uniwrench_version")) {
-        modImplementation("net.danygames2014:UniWrench:${project.uniwrench_version}") {
-            transitive = false
-        }
-    }
-
-    if (project.hasProperty("debugutilities_version")) {
-        modImplementation("net.danygames2014:DebugUtilities:${project.debugutilities_version}")
     }
 
     if (project.hasProperty("retroauth_version")) {

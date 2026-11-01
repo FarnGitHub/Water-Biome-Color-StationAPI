@@ -1,23 +1,30 @@
 package farn.water_biome_color.config;
 
 import farn.water_biome_color.WaterBiomeColor;
+import farn.water_biome_color.config.icon_handler.IconHandler;
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.resource.language.TranslationStorage;
+import net.modificationstation.stationapi.api.client.StationRenderAPI;
+import net.modificationstation.stationapi.api.client.texture.Sprite;
+import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import org.lwjgl.opengl.GL11;
 
+
 public class ConfigScreen extends Screen {
-    Screen parent;
+    private final Screen parent;
 
     public ConfigScreen(Screen parent) {
         this.parent = parent;
     }
 
     public void render(int mouseX, int mouseY, float delta) {
-        this.renderBackground();
+        this.renderBackgroundTexture(0);
         super.render(mouseX, mouseY, delta);
         this.drawCenteredTextWithShadow(minecraft.textRenderer, "Water Biome's Color Configuration", this.width / 2, 12, 16777215);
-        drawWaterIcon();
+        IconHandler.INSTANCE.drawIcon(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -57,16 +64,9 @@ public class ConfigScreen extends Screen {
         return "Water Style: " + WaterBiomeColor.STYLE.displayName;
     }
 
-    private void drawWaterIcon() {
-        float scale = 0.5F;
-        int textureScale = (int)(256 * scale);
-        GL11.glPushMatrix();
-        int textureId = minecraft.textureManager.getTextureId(WaterBiomeColor.STYLE.iconPath);
-        minecraft.textureManager.bindTexture(textureId);
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        GL11.glScalef(scale, scale, 0.0F);
-        drawTexture((this.width - textureScale), (this.height - textureScale) / 2, 0,0, 256, 256);
-        GL11.glPopMatrix();
+    public void tick() {
+        super.tick();
+        this.minecraft.textureManager.tick();
     }
 
 }

@@ -9,7 +9,7 @@ import net.minecraft.world.BlockView;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(LiquidBlock.class)
-public abstract class WaterBlockMixin {
+public class WaterBlockMixin {
 
     @WrapMethod(method="getColorMultiplier")
     public int setColor(BlockView view, int x, int y, int z, Operation<Integer> original) {

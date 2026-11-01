@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ArsenicStillWaterMixin {
 
     @Inject(method="tick", at = @At(value = "FIELD", target = "Lnet/modificationstation/stationapi/impl/client/arsenic/renderer/render/binder/ArsenicStillWater;anaglyph:Z", shift = At.Shift.BEFORE))
-    public void setNewColor(CallbackInfo ci, @Local(name = "var17") float waterValue, @Local(name="var18") LocalIntRef r, @Local(name="var19") LocalIntRef g, @Local(name="var7") LocalIntRef b, @Local(name="var8") LocalIntRef a) {
+    public void setNewColor(CallbackInfo ci, @Local(type=float.class, ordinal = 1) float waterValue, @Local(type=int.class, ordinal=3) LocalIntRef r, @Local(type=int.class, ordinal=4) LocalIntRef g, @Local(type=int.class, ordinal=5) LocalIntRef b, @Local(type=int.class, ordinal=6) LocalIntRef a) {
         WaterBiomeColor.setDynamicTextureColor(waterValue, r, g, b, a);
     }
 
